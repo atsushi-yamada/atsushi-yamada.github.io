@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-script-type" content="text/javascript">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>div1つで六角形</title>
+		<meta name="description" content="Get Wild and ToughするとGet Wildできます">
+		<meta name="keywords" content="Get Wild,Get Wild and Tough,Get,Wild,and,Tough">
+		<link type="text/css" rel="Stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</head>
+	<body>
+		<header>
+			<div class="header-area">
+				<h1>div1つで六角形</h1>
+			</div>
+		</header>
+		<main>
+			<article>
+				<div class="content-area">
+					<section>
+						<div class="content-lead-area">
+							<div class="hex-area">
+								<div class="hex"></div>
+							</div>
+						</div>
+					</section>
+					<section>
+						<pre class="source">
+.hex {
+	position: relative;
+	width: 220px;
+	height: 128px;
+	background-color: lightblue;
+}
+.hex:before {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: lightblue;
+	-moz-transform: rotate(60deg);
+	-webkit-transform: rotate(60deg);
+	-o-transform: rotate(60deg);
+	-ms-transform: rotate(60deg);
+	transform: rotate(60deg);
+	content: "";
+}
+.hex:after {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: lightblue;
+	-moz-transform: rotate(-60deg);
+	-webkit-transform: rotate(-60deg);
+	-o-transform: rotate(-60deg);
+	-ms-transform: rotate(-60deg);
+	transform: rotate(-60deg);
+	content: "";
+}
+						</pre>
+					</section>
+				</div>
+			</article>
+		</main>
+		<footer>
+			<div class="footer-area">
+				&copy;yamada
+			</div>
+		</footer>
+	</body>
+</html>
