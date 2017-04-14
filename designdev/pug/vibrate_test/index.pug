@@ -1,0 +1,25 @@
+extend /templates/_header
+block title
+	title Vibration API テスト | #{sitettl}
+block body
+	header
+		h1.ttl-page Vibration API テスト
+	main
+		div.container
+			div.column-area
+				h1.ttl-section サンプル
+				dl.vib-form-block
+					dt メールアドレス
+					dd
+						p
+							input(type="email" placeholder="hogehoge@example.co.jp")
+						p.alert-txt#mail-alert
+				dl.vib-form-block
+					dt 電話番号
+					dd
+						p
+							input(type="tel" placeholder="0301234567")
+						p.alert-txt#tel-alert
+	include /templates/_footer
+	script(type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js")
+	script(type="text/javascript" src="./js/vib.js")

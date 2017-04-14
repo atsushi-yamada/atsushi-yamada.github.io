@@ -1,0 +1,19 @@
+//------------------------------------------------------------
+// style
+//------------------------------------------------------------
+.page-img {
+	img {
+		width: auto;
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+.next-link {
+	@include padding(20px null 20px null);
+	text-align: center;
+	a {
+		padding: 20px 10px;
+		border: 1px solid colors(link);
+	}
+}

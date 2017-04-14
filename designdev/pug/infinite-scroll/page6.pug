@@ -1,0 +1,28 @@
+extend /templates/_header
+block title
+	title 無限スクロール テストページ6 | #{sitettl}
+block body
+	header
+		h1.ttl-page 無限スクロール テストページ
+	main
+		div.container
+			div.infinite-scroll
+				div.infinite-scroll-inner
+					div.column-area
+						h1.ttl-section.top-of-page(data-url="page6.html") 無限スクロール テストページ6
+						p.page-img
+							img(src="http://placekitten.com/900/150")
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						h2.ttl-block 記事の中見出し
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						h2.ttl-block 記事の中見出し
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						h2.ttl-block 記事の中見出し
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						p.next-link
+							a(href="page7.html") next
+	include /templates/_footer
+	script(type="text/javascript" src="http://code.jquery.com/jquery-2.1.3.min.js")
+	script(type="text/javascript" src="./js/jquery.infinitescroll.min.js")
+	script(type="text/javascript" src="./js/jquery.inview.min.js")
+	script(type="text/javascript" src="./js/script.js")

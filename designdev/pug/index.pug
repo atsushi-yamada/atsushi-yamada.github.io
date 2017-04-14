@@ -1,0 +1,14 @@
+extend /templates/_header
+block body
+	header
+		h1.ttl-page #{sitettl}
+	main
+		div.container
+			article
+				div.column-area
+					h1.ttl-section 目次
+					p
+						a(href="/vibrate_test/") VibrationAPIのテスト
+					p
+						a(href="/infinite-scroll/") 無限スクロールのテスト
+	include /templates/_footer

@@ -1,0 +1,283 @@
+@import '//fonts.googleapis.com/css?family=Roboto:400,300,500,700,900|Roboto+Condensed:400,300,300italic,700italic',
+		'//fonts.googleapis.com/earlyaccess/notosansjp.css';
+
+//------------------------------------------------------------
+// コンテンツ設定値
+//------------------------------------------------------------
+
+//=========================
+// PCコンテンツ幅
+//=========================
+
+// コンテンツの幅
+$pcContentsWidth: 1070px;
+
+//メインコンテンツの幅
+$pcMainWidth: 770px;
+
+//サブコンテンツの幅
+$pcSubWidth: $pcContentsWidth - $pcMainWidth;
+
+//=========================
+// タブレットコンテンツ幅
+//=========================
+
+// コンテンツの幅
+$tbContentsWidth: 100%;
+
+//メインコンテンツの幅
+$tbMainWidth: 750px;
+
+//サブコンテンツの幅
+//$tbSubWidth: auto;
+
+//=========================
+// SPコンテンツ幅
+//=========================
+
+// コンテンツの幅
+$spContentsWidth: 100%;
+
+//------------------------------------------------------------
+// base
+//------------------------------------------------------------
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-style: normal;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+html {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 62.5%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: colors(col-white);
+	font-family:"Roboto", "Noto Sans JP", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color: colors(basetxt);
+	@include fz(16);
+	line-height: 1.75;
+	-webkit-text-size-adjust: 100%;
+}
+
+a {
+	&:link {
+		color: colors(link);
+		@include transition(0.3s);
+	}
+	&:hover {
+		@include opacity(0.8);
+	}
+	&:visited {
+		color: colors(visited);
+	}
+	&:focus {
+		outline: none;
+	}
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote {
+	&:before, &:after {
+		content: '';
+		content: none;
+	}
+}
+
+q {
+	&:before, &:after {
+		content: '';
+		content: none;
+	}
+}
+
+ol, ul {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+caption, th {
+	text-align: left;
+}
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid colors(col-lightgray);
+	margin: 10px 0;
+	padding: 0;
+}
+
+img {
+	border-style: none;
+	vertical-align: bottom;
+}
+
+input, textarea, select {
+	margin: 0;
+	padding: 0;
+	@include fz(16);
+	font-family: "Roboto","ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	vertical-align: baseline;
+}
+
+input {
+	&[type="radio"], &[type="checkbox"] {
+		display: none;
+		& + label {
+			@include inline-block;
+			position: relative;
+			padding: 3px 0 3px 26px;
+			cursor: pointer;
+			&:before {
+				position: absolute;
+				top: 4px;
+				left: 0;
+				width: 20px;
+				height: 20px;
+				border: 2px solid colors(col-xlightgray);
+				background-color: colors(col-white);
+				content: "";
+				@include transition(0.3s);
+			}
+			&:after {
+				position: absolute;
+				content: "";
+				@include transition(0.3s);
+			}
+		}
+		&:checked + label {
+			&:before {
+				border: 2px solid colors(disable);
+			}
+		}
+	}
+	&[type='radio'] {
+		& + label {
+			&:before {
+				@include border-radius(50%,50%,50%,50%)
+			}
+			&:after {
+				top: 10px;
+				left: 6px;
+				width: 12px;
+				height: 12px;
+				@include border-radius(50%,50%,50%,50%)
+				background-color: rgba(colors(col-xlightgray),0.5);
+			}
+		}
+		&:checked + label {
+			&:after {
+				background-color: colors(link);
+				@include box-shadow(1px,1px,2px,0,rgba(0,0,0,0.45),inset);
+			}
+		}
+	}
+	&[type='checkbox'] {
+		& + label {
+			&:after {
+				top: 8px;
+				left: 3px;
+				width: 14px;
+				height: 6px;
+				border-left: 4px solid rgba(colors(col-xlightgray),0.5);
+				border-bottom: 4px solid rgba(colors(col-xlightgray),0.5);
+				@include rotate(-45);
+			}
+		}
+		&:checked + label {
+			&:after {
+				border-left: 4px solid colors(link);
+				border-bottom: 4px solid colors(link);
+				@include box-shadow(-1px,1px,1px,0,rgba(0,0,0,0.45));
+			}
+		}
+	}
+
+	&[type="text"], &[type="tel"], &[type="email"], &[type="password"], &[disabled] {
+		padding: 3px;
+		height: 26px;
+		border: 1px solid colors(col-lightgray);
+		@include border-radius(3px,3px,3px,3px);
+		@include box-shadow(1px,1px,1px,0, rgba(0,0,0,0.25),inset);
+		background: colors(col-white);
+		box-sizing: border-box;
+		&:focus {
+			@include box-shadow(0,0,5px,0,rgba(colors(link),0.75));
+		}
+		@include break-point(tblandscape) {
+			height: 34px;
+		}
+		@include break-point(tbportrait) {
+			height: 34px;
+		}
+		@include break-point(mobile) {
+			height: 34px;
+		}
+	}
+
+	&[disabled] {
+		background: colors(disable);
+		@include box-shadow(1px,1px,0,0,rgba(0,0,0,0),inset);
+	}
+
+	&[readonly] {
+		padding: 0;
+		border: none;
+		background: transparent;
+		@include box-shadow(1px,1px,0,0,rgba(0,0,0,0),inset);
+		&:focus {
+			@include box-shadow(0,0,0,0,rgba(colors(link),0.0));
+		}
+	}
+}
+
+textarea {
+	padding: 3px;
+	border: 1px solid colors(col-lightgray);
+	background: colors(col-white);
+	@include box-shadow(1px,1px,1px,0, rgba(0,0,0,0.25),inset);
+	box-sizing: border-box;
+	&[disabled], &[readonly] {
+		background: colors(disable);
+	}
+	&:focus {
+		@include box-shadow(0,0,5px,0,rgba(66,187,255,0.8));
+	}
+}
+
+select {
+	height: 26px;
+	border: 1px solid colors(col-lightgray);
+	background: colors(col-white);
+	&:focus {
+		@include box-shadow(0,0,5px,0,rgba(66,187,255,0.8));
+	}
+	@include break-point(tblandscape) {
+		height: 34px;
+	}
+	@include break-point(mobile) {
+		height: 34px;
+	}
+}

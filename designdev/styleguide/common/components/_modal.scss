@@ -1,0 +1,118 @@
+//------------------------------------------------------------
+// modal
+//------------------------------------------------------------
+
+//=========================
+// モーダル基本セット
+//=========================
+
+.ybox {
+	&-overlay {
+		position: absolute;
+		width: 100%;
+		background: rgba($black, 0.4);
+		z-index: 10000;
+	}
+	&-container {
+		position: fixed;
+		left: 0;
+		top: 0;
+		max-width: 90%;
+		max-height: 90%;
+		border: 3px solid colors(col-black);
+		@include border-radius(3px);
+		z-index: 20000;
+		@include break-point(mobile) {
+			width: 90%;
+		}
+	}
+	&-content {
+		display: block;
+		background: colors(col-white);
+		overflow: auto;
+	}
+	&-hidden {
+		display: none;
+	}
+	&-close {
+		display: block;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		padding: 5px;
+		border-left: 2px solid colors(col-white);
+		border-bottom: 2px solid colors(col-white);
+		background: colors(col-black);
+		color: colors(col-white) !important;
+		@include fz(28);
+		line-height: 1;
+		text-decoration: none;
+		z-index: 20001;
+	}
+}
+
+//=========================
+// モーダルコンテンツ設定
+//=========================
+
+.modal-content-area {
+	padding: 10px;
+}
+
+.zip-advanced-table {
+	width: 100%;
+	@include break-point(mobile) {
+		display: block;
+		margin-bottom: 20px;
+	}
+	& th {
+		width: 90px;
+		padding: 5px;
+		vertical-align: top;
+		@include break-point(mobile) {
+			display: block;
+			width: auto;
+			padding: 0;
+		}
+	}
+	& td {
+		padding: 5px;
+		vertical-align: top;
+		@include break-point(mobile) {
+			display: block;
+			padding: 0;
+		}
+	}
+	& .advanced-select-region {
+		width: 200px;
+		@include break-point(mobile) {
+			width: 100%;
+		}
+	}
+	& .advanced-select-cityhead {
+		width: 90px;
+		@include break-point(mobile) {
+			width: 100%;
+		}
+	}
+	& .advanced-select-city {
+		width: 240px;
+		@include break-point(mobile) {
+			width: 100%;
+		}
+	}
+	& .advanced-select-street {
+		width: 200px;
+		@include break-point(mobile) {
+			width: 100%;
+		}
+	}
+}
+
+.zip-submit-btn-block {
+	margin: 10px 0;
+	text-align: center;
+	&.btn-blue, .btn-gray {
+		margin: 0 10px;
+	}
+}

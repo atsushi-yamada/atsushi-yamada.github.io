@@ -1,0 +1,317 @@
+//------------------------------------------------------------
+// extend setting
+//------------------------------------------------------------
+
+%clearfix {
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
+// -----------------------------------------------------------
+// mixinsetting
+// -----------------------------------------------------------
+
+//=========================
+// ie7 hack
+//=========================
+
+@mixin hackIE7 {
+	*:first-child+html & {
+		@content;
+	}
+}
+
+//=========================
+// old ie
+//=========================
+
+@mixin inline-block {
+	display: inline-block;
+		@include hackIE7 {
+			display: inline;
+			zoom: 1;
+		}
+}
+
+@mixin table-cell {
+	display: table-cell;
+		@include hackIE7 {
+			display: inline;
+			zoom: 1;
+		}
+}
+
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	filter: alpha(opacity=($opacity * 100));
+}
+
+//=========================
+// flex box
+//=========================
+
+@mixin flex-block {
+	display: -webkit-flex;
+	display: flex;
+}
+
+
+@mixin flex-inline {
+	display: -webkit-inline-flex;
+	display: inline-flex;
+}
+
+//=========================
+// media-query
+//=========================
+
+@mixin break-point($point) {
+	@if $point == tblandscape {
+		@media only screen and (max-width:1024px) { // iPadの横基準
+			@content;
+		}
+	} @else if $point == tbportrait { // nexus7で横にしても縦と同じ画面で見れるようにしている
+ 		@media only screen and (max-width:970px) {
+			@content;
+ 		}
+ 	} @else if $point == mobile {
+		@media only screen and (max-width:480px) { // iPhone4を横にしても縦と同じ画面で見れるようにしている
+			@content;
+ 		}
+ 	}
+}
+
+//=========================
+// general
+//=========================
+
+//mixin 文字サイズ
+@mixin fz($size: 16) {
+	font-size: $size + px;
+	font-size: ($size / 10)  + rem;
+}
+
+//mixin インデント
+@mixin text-indent($tivalue) {
+	text-indent: $tivalue + em;
+	padding-left: (-$tivalue) + em;
+}
+
+//mixin ボタン
+@mixin btn {
+	position: relative;
+	@include inline-block;
+	@include border-radius(3px);
+	padding: 8px;
+	border: none;
+	font-weight: 700;
+	line-height: 1;
+	text-align: center;
+	text-decoration: none;
+	overflow: hidden;
+	cursor: pointer;
+	@include box-shadow(0,5px,0,0,rgba(colors(col-black),0.2));
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	&:hover {
+		top: 1px;
+		@include box-shadow(0,4px,0,0,rgba(colors(col-black),0.2));
+	}
+	&:active {
+		top: 5px;
+		@include box-shadow(0,0,0,0,rgba(colors(col-black),0.0));
+	}
+}
+
+//=========================
+// figure
+//=========================
+
+//mixin 矢印
+@mixin arrow($direction: right, $size: 8, $color: $black){
+	$set: left;
+
+	@if $direction == left{
+		$set: right;
+	}@elseif $direction == top{
+		$set: bottom;
+	}@elseif $direction == bottom{
+		$set: top;
+	}@else{
+		$set: left;
+	}
+	$size: round($size / 2);
+
+	width: 0;
+	height: 0;
+	border: $size + px solid transparent;
+	border-#{$set}-color: $color;
+}
+
+//mixin 逆くの字型（＞）矢印
+@mixin arw-wedge($w: 4, $h: 4, $color: colors(basetxt)) {
+	position: absolute;
+	width: $w + px;
+	height: $h + px;
+	border-top: 1px solid $color;
+	border-right: 1px solid $color;
+	@include rotate(45);
+}
+
+//=========================
+// vender prefix
+//=========================
+
+$prefixList: -webkit-, -moz-, -ms-, -o-, null;
+
+//=========================
+// decoration
+//=========================
+
+// mixin block link
+@mixin block-link {
+	background-color: rgba(colors(link),0.1);
+	@include box-shadow(0,0,5px,0,rgba(colors(link),0.75));
+	@include opacity(1.0);
+}
+
+// mixin transition
+@mixin transition($tsvalue) {
+	@each $prefix in $prefixList {
+		#{$prefix}transition: $tsvalue;
+	}
+}
+
+// mixin transform
+@mixin transform($transforms) {
+	@each $prefix in $prefixList {
+		#{$prefix}transform: $transforms;
+	}
+}
+
+// rotate
+@mixin rotate ($deg) {
+	@include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($x, $y) {
+	@include transform(scale($x, $y));
+} 
+// translate
+@mixin translate ($x, $y) {
+	@include transform(translate($x, $y));
+}
+// skew
+@mixin skew ($x, $y) {
+	@include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+// mixin border-radius
+@mixin border-radius($rad-top: 3px,$rad-right: 3px,$rad-bottom: 3px,$rad-left: 3px) {
+	@each $prefix in $prefixList {
+		#{$prefix}border-radius: $rad-top $rad-right $rad-bottom $rad-left;
+	}
+}
+
+// mixin box-shadow
+@mixin box-shadow( $h: 10px , $v: 10px , $b: 0px , $s: 0px , $c: #000000 , $set: "" ) {
+	@each $prefix in $prefixList {
+		#{$prefix}box-shadow: $h $v $b $s $c #{$set};
+	}
+}
+
+// mixin keyframe
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+// mixin animation
+@mixin animation($animation-name) {
+	@each $prefix in $prefixList {
+		#{$prefix}animation: #{$animation-name};
+		#{$prefix}animation-fill-mode: both;
+	}
+}
+
+// mixin gradient
+@mixin gradient($start-color, $end-color, $orientation: vertical ) {
+	background: $end-color;
+	@if $orientation == vertical
+	{
+		// vertical
+		background: -moz-linear-gradient(top,  $start-color 0%, $end-color 100%);
+		background: -webkit-linear-gradient(top,  $start-color 0%,$end-color 100%);
+		background: -o-linear-gradient(top,  $start-color 0%,$end-color 100%);
+		background: -ms-linear-gradient(top,  $start-color 0%,$end-color 100%);
+		background: linear-gradient(to bottom,  $start-color 0%,$end-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start-color}', endColorstr='#{$end-color}',GradientType=0 );
+	}
+	@else if $orientation == horizontal
+	{
+		// horizontal
+		background: -moz-linear-gradient(left,  $start-color 0%, $end-color 100%);
+		background: -webkit-linear-gradient(left,  $start-color 0%,$end-color 100%);
+		background: -o-linear-gradient(left,  $start-color 0%,$end-color 100%);
+		background: -ms-linear-gradient(left,  $start-color 0%,$end-color 100%);
+		background: linear-gradient(to right,  $start-color 0%,$end-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start-color}', endColorstr='#{$end-color}',GradientType=1 );
+	}
+	@else
+	{
+		// radial
+		background: -moz-radial-gradient(center, ellipse cover,  $start-color 0%, $end-color 100%);
+		background: -webkit-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+		background: -o-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+		background: -ms-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+		background: radial-gradient(ellipse at center,  $start-color 0%,$end-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start-color}', endColorstr='#{$end-color}',GradientType=1 );
+	}
+}
+
+@mixin multiple-gradient($start-color, $half-start-color, $half-end-color, $end-color, $orientation: vertical ) {
+	background: $end-color;
+	@if $orientation == vertical
+	{
+		// vertical
+		background: -moz-linear-gradient(top,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: -webkit-linear-gradient(top,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: -o-linear-gradient(top,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: -ms-linear-gradient(top,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: linear-gradient(to bottom,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+	}
+	@else if $orientation == horizontal
+	{
+		// horizontal
+		background: -moz-linear-gradient(left,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: -webkit-linear-gradient(left,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: -o-linear-gradient(left,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: -ms-linear-gradient(left,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: linear-gradient(to right,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+	}
+	@else
+	{
+		// radial
+		background: -moz-radial-gradient(center, ellipse cover,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: -webkit-radial-gradient(center, ellipse cover,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: -o-radial-gradient(center, ellipse cover,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: -ms-radial-gradient(center, ellipse cover,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+		background: radial-gradient(ellipse at center,  $start-color 0%, $half-start-color 49%, $half-end-color 50%, $end-color 100%);
+	}
+}

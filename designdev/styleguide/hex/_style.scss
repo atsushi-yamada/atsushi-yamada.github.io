@@ -1,0 +1,30 @@
+//------------------------------------------------------------
+// style
+//------------------------------------------------------------
+.vib-form-block {
+	display: table;
+	width: 100%;
+	margin: 10px 0;
+	table-layout: fixed;
+	dt {
+		display: table-cell;
+		width: 120px;
+		padding-right: 5px;
+		border-right: 2px solid #ccc;
+		text-align: right;
+		vertical-align: top;
+	}
+	dd{
+		display: table-cell;
+		padding-left: 5px;
+		border-left: 3px solid #ccc;
+		text-align: left;
+		vertical-align: top;
+	}
+}
+
+.alert-txt {
+	display: none;
+	color: #f00;
+	font-size: 12px;
+}

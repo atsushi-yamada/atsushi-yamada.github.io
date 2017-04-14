@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+//------------------------------------------------------------
+// bourbon
+//------------------------------------------------------------
+@import 'bourbon';
+
+//------------------------------------------------------------
+// color variavle
+//------------------------------------------------------------
+@import 'common/color';
+
+//------------------------------------------------------------
+// mixin
+//------------------------------------------------------------
+@import 'common/mixin';
+
+//------------------------------------------------------------
+// Components
+//------------------------------------------------------------
+
+//=========================
+// base
+//=========================
+@import 'common/components/base';
+
+//=========================
+// header
+//=========================
+@import 'common/components/header';
+
+//=========================
+// breadcrumbs
+//=========================
+@import 'common/components/breadcrumbs';
+
+//=========================
+// nav
+//=========================
+@import 'common/components/nav';
+
+//=========================
+// footer
+//=========================
+@import 'common/components/footer';
+
+//=========================
+// title
+//=========================
+@import 'common/components/title';
+
+//=========================
+// block
+//=========================
+@import 'common/components/block';
+
+//=========================
+// buttons
+//=========================
+@import 'common/components/buttons';
+
+//=========================
+// icons
+//=========================
+@import 'common/components/icons';
+
+//------------------------------------------------------------
+// page layout
+//------------------------------------------------------------
+
+//=========================
+// Vibration API テスト
+//=========================
+
+.vib-form-block {
+	display: table;
+	width: 100%;
+	margin: 10px 0;
+	table-layout: fixed;
+	dt {
+		display: table-cell;
+		width: 120px;
+		padding-right: 5px;
+		border-right: 2px solid #ccc;
+		text-align: right;
+		vertical-align: top;
+	}
+	dd{
+		display: table-cell;
+		padding-left: 5px;
+		border-left: 3px solid #ccc;
+		text-align: left;
+		vertical-align: top;
+	}
+}
+
+.alert-txt {
+	display: none;
+	color: #f00;
+	font-size: 12px;
+}
+
+//------------------------------------------------------------
+// 汎用class
+//------------------------------------------------------------
+
+//=========================
+// modal window
+//=========================
+@import 'common/components/modal';
+
+//=========================
+// type
+//=========================
+@import 'common/components/type';
+
+//=========================
+// utility
+//=========================
+@import 'common/components/utility';

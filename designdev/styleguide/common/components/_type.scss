@@ -1,0 +1,55 @@
+//
+// Typography
+// --------------------------------------------------
+
+.col {
+	&-black {
+		color: colors(col-black);
+	}
+	&-white {
+		color: colors(col-white);
+	}
+	&-gray {
+		color: colors(col-gray);
+	}
+	&-lightgray {
+		color: colors(col-lightgray);
+	}
+	&-xlightgray {
+		color: colors(col-xlightgray);
+	}
+	&-orange {
+		color: colors(col-orange);
+	}
+	&-red {
+		color: colors(col-red);
+	}
+	&-blue {
+		color: colors(col-blue);
+	}
+	&-ttlblue {
+		color: colors(ttl);
+	}
+	&-yellow {
+		color: colors(col-yellow);
+	}
+}
+
+.txt-strong {
+	font-weight: 700;
+}
+
+.txt-normal {
+	font-weight: normal;
+}
+
+.txt-indent {
+	padding-left: 1em;
+	text-indent: -1em;
+}
+
+@for $value from 1 through 30 {
+	.fsize-#{$value * 2} {
+		@include fz(2 * $value);
+	}
+}

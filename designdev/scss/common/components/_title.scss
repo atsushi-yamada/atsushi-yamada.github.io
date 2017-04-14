@@ -1,0 +1,43 @@
+// 見出し
+//
+// ページ内に使われている見出しについて。<br>
+// ページ見出し、セクション毎の見出し、セクション内のさらに小見出しの3つに大きく分かれる。<br>
+// メーカー検索ページではメーカー説明用の見出しを使っている。<br>
+// コラムおよび初心者ガイドではアイキャッチ画像用の見出しを使っている。
+//
+// Markup:
+// <h1 class="ttl-page">ページ見出し.ttl-page</h1>
+// <h2 class="ttl-section">セクション毎の見出し.ttl-section</h2>
+// <h3 class="ttl-block">セクション内の小見出し.ttl-block</h3>
+//
+// Styleguide 1.0.0
+
+//------------------------------------------------------------
+// title
+//------------------------------------------------------------
+
+.ttl-page {
+	@include fz(20);
+	font-weight: 700;
+}
+
+.ttl-section {
+	margin: 0 0 4px;
+	border-bottom: 1px dotted colors(col-blue);
+	color: colors(col-blue);
+	@include fz(18);
+	font-weight: 700;
+}
+
+.ttl-block {
+	position: relative;
+	padding: 0 0 0 10px;
+	font-weight: 700;
+}
+.ttl-block:before {
+	position: absolute;
+	top: 8px;
+	left: 0px;
+	border: 4px solid #000;
+	content: ""
+}

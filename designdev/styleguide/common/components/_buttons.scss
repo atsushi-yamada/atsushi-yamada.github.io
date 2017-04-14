@@ -1,0 +1,43 @@
+// ボタン
+//
+// ページ内に使われているボタンについて。
+//
+// Markup:
+// <p>通常のボタン.btn-blue</p>
+// <p><a href="javascript:;" class="btn-blue">ボタン</a></p>
+// <p>サブ的意味合いボタン.btn-gray</p>
+// <p><a href="javascript:;" class="btn-gray">ボタン</a></p>
+//
+// Styleguide 3.0.0
+
+//------------------------------------------------------------
+// Buttons
+//------------------------------------------------------------
+
+//=========================
+// ボタン全般
+//=========================
+
+.btn {
+	// メイン要素ボタン
+	//------------------------------------------------------------
+	&-blue {
+		@include btn;
+		color: colors(col-white);
+		background: colors(link);
+		text-shadow: -1px -1px 0px rgba(colors(col-black), 0.4);
+		&:link,&:visited {
+			color: colors(col-white);
+		}
+	}
+	// サブ要素ボタン
+	//------------------------------------------------------------
+	&-gray {
+		@include btn;
+		color: colors(basetxt);
+		background: colors(col-xlightgray);
+		&:link,&:visited {
+			color: colors(basetxt);
+		}
+	}
+}

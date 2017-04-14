@@ -1,0 +1,143 @@
+//------------------------------------------------------------
+// Utility
+//------------------------------------------------------------
+
+//=========================
+// 配置
+//=========================
+
+.fl {
+	&-left {
+		float: left;
+	}
+	&-right {
+		float: right;
+	}
+}
+
+.align {
+	&-left {
+		text-align: left;
+	}
+	&-center {
+		text-align: center;
+	}
+	&-right {
+		text-align: right;
+	}
+}
+
+.valign {
+	&-top {
+		vertical-align: top;
+	}
+	&-middle {
+		vertical-align: middle;
+	}
+	&-bottom {
+		vertical-align: bottom;
+	}
+	&-baseline {
+		vertical-align: baseline;
+	}
+	&-sub {
+		vertical-align: sub;
+	}
+	&-sup {
+		vertical-align: sup;
+	}
+	&-texttop {
+		vertical-align: text-top;
+	}
+	&-textbottom {
+		vertical-align: text-bottom;
+	}
+}
+
+//=========================
+// 余白調整
+//=========================
+
+@for $value from 0 through 10 {
+	.mt-#{$value * 5} {
+		margin-top: 5px * $value;
+	}
+	.mr-#{$value * 5} {
+		margin-right: 5px * $value;
+	}
+	.mb-#{$value * 5} {
+		margin-bottom: 5px * $value;
+	}
+	.ml-#{$value * 5} {
+		margin-left: 5px * $value;
+	}
+	.pt-#{$value * 5} {
+		padding-top: 5px * $value;
+	}
+	.pr-#{$value * 5} {
+		padding-right: 5px * $value;
+	}
+	.pb-#{$value * 5} {
+		padding-bottom: 5px * $value;
+	}
+	.pl-#{$value * 5} {
+		padding-left: 5px * $value;
+	}
+}
+
+//=========================
+// 文字装飾
+//=========================
+
+//_type.scssにまとめた
+
+//=========================
+// 枠線
+//=========================
+
+.bd {
+	$border-col: colors(col-lightgray);
+	&-all {
+		padding: 10px;
+		border: 1px solid $border-col;
+	}
+	&-top {
+		border-top: 1px solid $border-col;
+	}
+	&-right {
+		border-right: 1px solid $border-col;
+	}
+	&-bottom {
+		border-bottom: 1px solid $border-col;
+	}
+	&-left {
+		border-left: 1px solid $border-col;
+	}
+}
+
+//=========================
+// リストマーク・番号リスト
+//=========================
+
+.list {
+	&-num {
+		margin-left: 24px;
+		list-style-type: decimal;
+	}
+	&-disc {
+		margin-left: 20px;
+		list-style-type: disc;
+	}
+	&-circle {
+		margin-left: 20px;
+		list-style-type: circle;
+	}
+}
+
+//=========================
+// clearfix
+//=========================
+
+.clearfix {
+	@extend %clearfix;
+}
