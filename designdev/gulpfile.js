@@ -40,7 +40,7 @@ gulp.task('sass', function(){
 		.pipe(crLfReplace({
 			changeCode: 'CR+LF' // CR+LF, LF, CR
 		}))
-		.pipe(gulp.dest('../docs/css'));
+		.pipe(gulp.dest('../css'));
 });
 
 // pug コンパイル
@@ -61,7 +61,7 @@ gulp.task('pug', function buildHTML() {
 	.pipe(crLfReplace({
 		changeCode: 'CR+LF' // CR+LF, LF, CR
 	}))
-	.pipe(gulp.dest('../docs/'));
+	.pipe(gulp.dest('../'));
 });
 
 // BrowserSync
@@ -69,7 +69,7 @@ gulp.task('pug', function buildHTML() {
 gulp.task('bs', function () {
 	browserSync({
 		server: {
-			baseDir: '../docs/',
+			baseDir: '../',
 		}
 	});
 });
@@ -104,10 +104,10 @@ gulp.task('styleguide', ['styleguide:generate', 'styleguide:applystyles']);
 // ------------------------------------------
 gulp.task('watch', ['bs', 'styleguide'], function () {
 	gulp.watch([
-		'../docs/**/*.html',
-		'../docs/css/**/*.css',
-		'../docs/js/**/*.js',
-		'../docs/img/**/*'
+		'../**/*.html',
+		'../css/**/*.css',
+		'../js/**/*.js',
+		'../img/**/*'
 	]).on('change', browserSync.reload);
 	gulp.watch('./scss/**/*.scss', ['sass']);
 	gulp.watch('./pug/**/*.pug', ['pug']);
