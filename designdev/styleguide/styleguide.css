@@ -423,6 +423,19 @@ footer {
   color: #f00;
   font-size: 12px; }
 
+.page-img img {
+  width: auto;
+  max-width: 100%;
+  height: auto; }
+
+.next-link {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center; }
+  .next-link a {
+    padding: 20px 10px;
+    border: 1px solid #6b96fa; }
+
 .ybox-overlay {
   position: absolute;
   width: 100%;
